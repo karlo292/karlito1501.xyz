@@ -61,22 +61,24 @@ export const ProjectCard = ({ project, index }: Props) => {
           </div>
 
           <div className="flex gap-3 pt-1">
-            <Button
-              variant="outline"
-              size="sm"
-              asChild
-              className="hover:bg-primary hover:text-primary-foreground transition-colors"
-            >
-              <a
-                href={project.repo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
+            {project.repo && (
+              <Button
+                variant="outline"
+                size="sm"
+                asChild
+                className="hover:bg-primary hover:text-primary-foreground transition-colors"
               >
-                <Github className="h-4 w-4" />
-                Code
-              </a>
-            </Button>
+                <a
+                  href={project.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <Github className="h-4 w-4" />
+                  Code
+                </a>
+              </Button>
+            )}
             {project.demo && (
               <Button size="sm" asChild className="transition-colors">
                 <a
