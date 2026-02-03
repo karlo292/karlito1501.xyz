@@ -9,7 +9,7 @@ export const siteMetadata = {
   ],
   social: {
     email: "karlito1501@gmail.com",
-    x: "https://x.com/karlito1501",
+    x: "https://x.com/karlo2921",
     githubLink: `https://github.com/karlo292`,
   },
   repo: `https://github.com/karlo292/karlito1501.xyz`,

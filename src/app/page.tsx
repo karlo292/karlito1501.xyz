@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ArrowRight, Download } from "lucide-react";
 import { getAllBlogs } from "@/lib/blog";
+import { FaDiscord } from "react-icons/fa6";
 
 
 const allBlogs = getAllBlogs()
@@ -92,6 +93,14 @@ export default function Home() {
               <ArrowRight className="h-4 w-4 ml-2" />
             </Link>
           </Button>
+          {LINKS.DISCORD && (
+            <Button variant={"outline"} asChild>
+              <Link target={"_blank"} href={LINKS.DISCORD}>
+                Discord
+                <FaDiscord />
+              </Link>
+            </Button>
+          )}
         </div>
       </section>
 

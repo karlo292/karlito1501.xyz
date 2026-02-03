@@ -9,18 +9,13 @@ import {
 export const SOCIALS = [
   {
     label: "GitHub",
-    href: "https://github.com/adarshaacharya",
+    href: "https://github.com/karlo292",
     icon: GitHubIcon,
   },
   {
     label: "X",
-    href: "https://x.com/adarsha_ach",
+    href: "https://x.com/karlito1501",
     icon: XIcon,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/adarshaacharya",
-    icon: LinkedInIcon,
   },
   {
     label: "Youtube",

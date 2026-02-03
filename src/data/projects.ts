@@ -12,7 +12,7 @@ export const WEB_APPS: WebApp[] = [
     title: "Dutch Expat Check",
     demo: "https://www.expatcheck.nl/",
     description:
-      "An application that helps expats in the Netherlands to check their eligibility for various permits, visas, and benefits based on their personal circumstances.",
+      "An application that helps expats in the Netherlands to check their eligibility for tax deduction and benefits based on their personal circumstances.",
     tags: ["Next.js", "TypeScript", "Frontend", "Backend"],
     thumbnail: "/_static/projects/expat-check.png",
   },
@@ -33,6 +33,13 @@ export const WEB_APPS: WebApp[] = [
     tags: ["Next.js", "TypeScript", "Frontend"],
     thumbnail: "/_static/projects/infracharm.png",
   },
+  {
+    title: "GetFit",
+    description:
+    "A gym website design built with Figma for a fitness centar.",
+    tags: ["Figma", "Design"],
+    thumbnail: "/_static/projects/getfit.jpg",
+  }
 ] as WebApp[];
 
 export type Tool = {
