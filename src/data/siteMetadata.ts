@@ -1,18 +1,16 @@
 export const siteMetadata = {
-  title: "Adarsha Acharya",
-  author: "Adarsha Acharya",
-  siteUrl: "https://adarsha.dev",
+  title: "karlito1501",
+  author: "karlito1501",
+  siteUrl: "https://karlito1501.xyz",
   socialBanner: "/_static/default-og-card.png",
-  description:
-    "Adarsha Acharya - Fullstack developer passionate about creating and sharing things on internet",
+  description: "A Passionate Full Stack Developer & Web Designer",
   keywords: [
-    `Adarsha Acharya, Adarsha, Acharya, adarshaacharya, Aadarsha Acharya, Aadarsha, Acharya, adarsha.dev, adarsha, acharya, aadarsha`,
+    `web development, full stack developer, web designer, javascript, typescript, react, node.js, css, html, portfolio, karlito1501, karlito, karlito1501.xyz`,
   ],
   social: {
-    email: "hi@adarsha.dev",
-    x: "https://x.com/adarsha_ach",
-    linkedinLink: `https://www.linkedin.com/in/adarshaacharya/`,
-    githubLink: `https://github.com/adarshaacharya`,
+    email: "karlito1501@gmail.com",
+    x: "https://x.com/karlito1501",
+    githubLink: `https://github.com/karlo292`,
   },
-  repo: `https://github.com/adarshaacharya/adarsha.dev`,
+  repo: `https://github.com/karlo292/karlito1501.xyz`,
 };

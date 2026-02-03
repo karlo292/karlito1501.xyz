@@ -1,9 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config({ path: ".env" });
 
-import { QdrantVectorStore } from "@langchain/qdrant";
 import { QdrantClient } from "@qdrant/js-client-rest";
-import { openaiEmbeddings } from "./openai";
 
 const API_KEY = process.env.QDRANT_API_KEY;
 const URL = process.env.QDRANT_URL;
@@ -15,59 +13,77 @@ if (!URL || !API_KEY || !COLLECTION_NAME) {
   );
 }
 
-const qadrantClient = new QdrantClient({
+const qdrantClient = new QdrantClient({
   url: URL,
   apiKey: API_KEY,
 });
 
 const collectionName = COLLECTION_NAME;
 
-export async function getVectorStore() {
+// Keyword-based search using Qdrant's scroll/filter
+export async function searchByKeyword(searchTerm: string, limit = 10) {
   try {
-    const vectorStore = await QdrantVectorStore.fromExistingCollection(
-      openaiEmbeddings,
-      {
-        apiKey: API_KEY,
-        url: URL,
-        collectionName,
-        collectionConfig: {
-          vectors: {
-            distance: "Cosine",
-            size: 100,
+    const results = await qdrantClient.scroll(collectionName, {
+      filter: {
+        should: [
+          {
+            key: "content",
+            match: { text: searchTerm },
           },
-        },
+          {
+            key: "title",
+            match: { text: searchTerm },
+          },
+        ],
       },
-    );
-    return vectorStore;
+      limit,
+      with_payload: true,
+    });
+    return results.points;
   } catch (error) {
-    console.error("Error getting vector store:", error);
-    throw new Error("Failed to get vector store");
+    console.error("Error searching by keyword:", error);
+    throw new Error("Failed to search by keyword");
   }
 }
 
+// Create collection for keyword-based storage (no vectors needed)
 export const getEmbeddingCollections = async () => {
-  const collectionExists = await qadrantClient.collectionExists(collectionName);
+  const collectionExists = await qdrantClient.collectionExists(collectionName);
 
-  if (!collectionExists) {
-    return qadrantClient.createCollection(collectionName, {
-      vectors: {
-        distance: "Cosine",
-        size: 1536, // https://js.langchain.com/docs/integrations/vectorstores/upstash/#instantiation
-      },
-    });
-  }
-
-  const deleted = await qadrantClient.deleteCollection(collectionName);
-  if (deleted) {
+  if (collectionExists.exists) {
+    await qdrantClient.deleteCollection(collectionName);
     console.log(`Collection ${collectionName} deleted successfully.`);
-  } else {
-    console.log(`Failed to delete collection ${collectionName}.`);
   }
 
-  return qadrantClient.createCollection(collectionName, {
+  // Create collection without vectors for keyword-only search
+  return qdrantClient.createCollection(collectionName, {
     vectors: {
+      size: 1, // Minimum size, not used for keyword search
       distance: "Cosine",
-      size: 1536,
     },
   });
 };
+
+// Add documents for keyword search
+export async function addDocuments(
+  documents: Array<{
+    id: string;
+    content: string;
+    title?: string;
+    metadata?: Record<string, unknown>;
+  }>,
+) {
+  const points = documents.map((doc, index) => ({
+    id: index,
+    vector: [0], // Dummy vector since we're using keyword search
+    payload: {
+      content: doc.content,
+      title: doc.title || "",
+      ...doc.metadata,
+    },
+  }));
+
+  return qdrantClient.upsert(collectionName, { points });
+}
+
+export { qdrantClient };

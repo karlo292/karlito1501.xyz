@@ -1,11 +1,15 @@
+export const dynamic = "force-dynamic";
 import { AnimatedBlogList } from "@/components/blog/animated-blog-list";
 import { Pagination } from "@/components/blog/pagination";
 import { SearchInput } from "../../components/blog/search-input";
-import { allBlogs } from "contentlayer/generated";
+import { getAllBlogs } from "@/lib/blog";
 import { generatePageMetadata } from "../seo";
 import { ENV } from "@/lib/env";
+import { Metadata } from "next";
 
-export const metadata = generatePageMetadata({
+const allBlogs = getAllBlogs()
+
+export const metadata: Metadata = generatePageMetadata({
   title: "Blog",
   description:
     "Explore my blog posts on Javascript, Typescript, React.js, Next.js, Prisma, Nest.js, AI , LLMs and more.",

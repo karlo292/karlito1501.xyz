@@ -1,6 +1,6 @@
 "use client";
 
-import { Blog } from "contentlayer/generated";
+import { Blog } from "@/types/Blog";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";

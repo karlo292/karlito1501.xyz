@@ -1,8 +1,7 @@
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { getMDXComponent } from "next-contentlayer2/hooks";
-import { BlogComments } from "./blog/blog-comments";
+import { MDXRemote } from "next-mdx-remote/rsc";
 
 function CustomLink(props: { href: string; children: React.ReactNode }) {
   const { href, ...rest } = props;
@@ -41,16 +40,12 @@ const components = {
   Callout,
 };
 
-export function Mdx({ code }: { code: string }) {
-  const Content = getMDXComponent(code);
-
+export function Mdx({ content }: { content: string }) {
   return (
     <React.Fragment>
-      {/* https://github.com/tailwindlabs/tailwindcss-typography#overriding-max-width */}
-      <article className="prose prose-neutral dark:prose-invert prose-quoteless  max-w-none">
-        <Content components={components} />
+      <article className="prose prose-neutral dark:prose-invert prose-quoteless max-w-none">
+        <MDXRemote source={content} components={components} />
       </article>
-      <BlogComments />
     </React.Fragment>
   );
 }

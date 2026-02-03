@@ -1,30 +1,57 @@
+export const dynamic = "force-dynamic";
 import type { Metadata } from "next";
-import { allBlogs } from "contentlayer/generated";
+import { getAllBlogs, getBlogBySlug } from "@/lib/blog";
 import Balancer from "react-wrap-balancer";
-import { Mdx } from "@/components/mdx";
 import { siteMetadata } from "@/data/siteMetadata";
 import NotFound from "@/app/not-found";
 import { formatDate } from "@/lib/utils";
-import { getMDXComponent } from "next-contentlayer2/hooks";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { Suspense } from "react";
 
-// export async function generateStaticParams() {
-//   const paths = allBlogs.map((blog) => ({ slug: blog.slug }));
+const allBlogs = getAllBlogs();
 
-//   return paths;
-// }
+const mdxComponents = {
+  Image: (props: React.ComponentProps<typeof Image>) => (
+    <Image {...props} className="rounded-lg" />
+  ),
+  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+    const href = props.href || "";
+    if (href.startsWith("/")) {
+      return (
+        <Link href={href} {...props}>
+          {props.children}
+        </Link>
+      );
+    }
+    if (href.startsWith("#")) {
+      return <a {...props} />;
+    }
+    return <a target="_blank" rel="noopener noreferrer" {...props} />;
+  },
+  Callout: (props: { emoji?: string; children: React.ReactNode }) => (
+    <div className="mb-8 flex items-center rounded border border-neutral-200 bg-neutral-50 p-1 px-4 py-3 text-sm text-neutral-900 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100">
+      {props.emoji && (
+        <div className="mr-4 flex w-4 items-center">{props.emoji}</div>
+      )}
+      <div className="callout w-full">{props.children}</div>
+    </div>
+  ),
+};
+
 
 export const generateStaticParams = async () =>
-  allBlogs.map((blog) => ({ slug: blog._raw.flattenedPath }));
+  allBlogs.map((blog) => ({ slug: blog.slug }));
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata | undefined> {
   const params = await props.params;
-  const blog = allBlogs.find((blog) => blog._raw.flattenedPath === params.slug);
+  const blog = getBlogBySlug(params.slug);
   if (!blog) {
     return;
   }
@@ -65,13 +92,11 @@ export default async function Blog(props: {
   params: Promise<{ slug: string }>;
 }) {
   const params = await props.params;
-  const blog = allBlogs.find((blog) => blog._raw.flattenedPath === params.slug);
+  const blog = getBlogBySlug(params.slug);
 
   if (!blog) {
-    return <NotFound />;
+    return <Suspense><NotFound /></Suspense>;
   }
-
-  const Content = getMDXComponent(blog.body.code);
 
   return (
     <article className="space-y-8">
@@ -103,7 +128,9 @@ export default async function Blog(props: {
 
       <Separator />
 
-      <Mdx code={blog.body.code} />
+      <div className="prose prose-neutral dark:prose-invert max-w-none">
+        <MDXRemote source={blog.content} components={mdxComponents} />
+      </div>
     </article>
   );
 }

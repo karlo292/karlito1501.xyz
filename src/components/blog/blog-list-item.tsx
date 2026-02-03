@@ -1,5 +1,5 @@
 import { formatDate } from "@/lib/utils";
-import { Blog } from "contentlayer/generated";
+import { Blog } from "@/types/Blog"
 import { ArrowRight, Clock } from "lucide-react";
 
 type BlogListItemProps = Pick<
