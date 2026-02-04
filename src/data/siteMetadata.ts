@@ -2,7 +2,7 @@ export const siteMetadata = {
   title: "karlito1501",
   author: "karlito1501",
   siteUrl: "https://karlito1501.xyz",
-  socialBanner: "/_static/default-og-card.png",
+  socialBanner: "",
   description: "A Passionate Full Stack Developer & Web Designer",
   keywords: [
     `web development, full stack developer, web designer, javascript, typescript, react, node.js, css, html, portfolio, karlito1501, karlito, karlito1501.xyz`,
