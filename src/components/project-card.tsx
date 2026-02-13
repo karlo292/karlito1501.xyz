@@ -92,6 +92,19 @@ export const ProjectCard = ({ project, index }: Props) => {
                 </a>
               </Button>
             )}
+            {project.purchase && (
+              <Button size="sm" asChild className="transition-colors">
+                <a
+                  href={project.purchase}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <ExternalLink className="h-4 w-4" />
+                  Purchase
+                </a>
+              </Button>
+          )}
           </div>
         </div>
       </div>

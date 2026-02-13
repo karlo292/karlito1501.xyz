@@ -4,6 +4,7 @@ export type WebApp = {
   description: string;
   tags: string[];
   demo?: string;
+  purchase?: string;
   thumbnail: string;
 };
 
@@ -17,29 +18,52 @@ export const WEB_APPS: WebApp[] = [
     thumbnail: "/_static/projects/expat-check.png",
   },
   {
-    title: "Savoria",
+    title: "Restaurant Template",
     demo: "https://restaurant-nextjs-jade.vercel.app/",
-    repo: "https://github.com/karlo292/restaurant-nextjs",
     description:
       "A modern restaurant website built with Next.js, featuring modern design, menu showcase, reservation system, and customer reviews to enhance the dining experience.",
     tags: ["Next.js", "TypeScript", "Template", "Frontend"],
     thumbnail: "/_static/projects/savoria.png",
   },
   {
+    title: "Restaurant Template (Version 2)",
+    demo: "https://restaurant-nextjs-2.vercel.app/",
+    description:
+      "An updated version of the modern restaurant website built with Next.js, with different design and style.",
+    tags: ["Next.js", "TypeScript", "Template", "Frontend"],
+    thumbnail: "/_static/projects/savoria-2.png",
+  },
+  {
     title: "Infracharm",
     demo: "https://infracharm-website.vercel.app/",
     description:
-    "The official website for Infracharm, showcasing their services, projects, and company information with a modern and responsive design provided by them.",
+      "The official website for Infracharm, showcasing their services, projects, and company information with a modern and responsive design provided by them.",
     tags: ["Next.js", "TypeScript", "Frontend"],
     thumbnail: "/_static/projects/infracharm.png",
   },
   {
-    title: "GetFit",
+    title: "Blaze Studios",
     description:
-    "A gym website design built with Figma for a fitness centar.",
+      "A portfolio website design built with Figma and NextJS for a creative studio.",
+    tags: ["Figma", "Design", "Next.js"],
+    thumbnail: "/_static/projects/blaze-studios.png",
+    demo: "https://portfolio-blazestudios.vercel.app/",
+  },
+  {
+    title: "Premium Hosting Template",
+    description: "A hosting website design built with NextJS.",
+    tags: ["Next.js", "TypeScript", "Template", "Frontend"],
+    thumbnail: "/_static/projects/premium-hosting-template.png",
+    purchase:
+      "https://builtbybit.com/resources/emerald-modern-hosting-website.65708/?ref=karlito1501",
+    demo: "https://premium-hosting-template.vercel.app",
+  },
+  {
+    title: "GetFit",
+    description: "A gym website design built with Figma for a fitness centar.",
     tags: ["Figma", "Design"],
     thumbnail: "/_static/projects/getfit.jpg",
-  }
+  },
 ] as WebApp[];
 
 export type Tool = {
@@ -48,6 +72,7 @@ export type Tool = {
   demo: string;
   description: string;
   techs: string[];
+  purchase?: string;
 };
 
 export const TOOLS: Tool[] = [

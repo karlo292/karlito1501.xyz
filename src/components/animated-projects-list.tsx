@@ -84,6 +84,17 @@ export function AnimatedProjectsList({
                     View
                   </a>
                 </Button>
+                <Button size="sm" asChild className="flex-1 transition-all">
+                  <a
+                    href={project.purchase}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2"
+                  >
+                    <ExternalLink className="h-3.5 w-3.5" />
+                    View
+                  </a>
+                </Button>
               </div>
             </CardContent>
           </Card>
