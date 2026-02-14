@@ -34,6 +34,14 @@ export const WEB_APPS: WebApp[] = [
     thumbnail: "/_static/projects/savoria-2.png",
   },
   {
+    title: "Pet Grooming Website",
+    demo: "https://grooming-salon-nextjs.vercel.app/",
+    description:
+      "A pet grooming website built with Next.js, featuring a modern design, service showcase, appointment form, and location details.",
+    tags: ["Next.js", "TypeScript", "Template", "Frontend"],
+    thumbnail: "/_static/projects/pawfect.png",
+  },
+  {
     title: "Infracharm",
     demo: "https://infracharm-website.vercel.app/",
     description:
