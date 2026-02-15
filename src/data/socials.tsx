@@ -17,9 +17,4 @@ export const SOCIALS = [
     href: "https://x.com/karlito1501",
     icon: XIcon,
   },
-  {
-    label: "Youtube",
-    href: "https://www.youtube.com/@ad4rsha",
-    icon: YoutubeIcon,
-  },
 ];
