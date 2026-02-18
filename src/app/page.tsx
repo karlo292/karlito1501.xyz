@@ -55,26 +55,20 @@ export default function Home() {
         */}
         <div className="space-y-4 text-muted-foreground leading-relaxed">
           <p>
-            Hey, I&apos;m Karlo — a fullstack developer passionate about
-            crafting performant web applications using TypeScript, React, and
-            Node.js
+            Welcome! We are a team of fullstack developers passionate about crafting performant web applications using TypeScript, React, and Node.js.
           </p>
           <p>
-            I enjoy solving complex problems, building clean and scalable
-            architectures, and turning ideas into polished products. Whether
-            it&apos;s a startup MVP or an enterprise solution, I bring
-            dedication and attention to detail to every project.
+            We thrive on solving complex problems, building clean and scalable architectures, and transforming ideas into polished products. From startup MVPs to enterprise solutions, our team brings dedication and attention to detail to every project.
           </p>
           <p>
-            Interested in collaborating or have an opportunity in mind? Feel
-            free to reach out at{" "}
+            Interested in collaborating or have an opportunity in mind? Feel free to reach out at{" "}
             <a
-              href="mailto:karlito1501@gmail.com"
+              href="mailto:contact@blazestudios.eu"
               className="font-medium text-foreground underline underline-offset-4 hover:text-primary transition-colors"
             >
-              karlito1501@gmail.com
+              contact@blazestudios.eu
             </a>{" "}
-            — I&apos;d love to hear from you.
+            — We’d love to hear from you.
           </p>
         </div>
 

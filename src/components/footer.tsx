@@ -15,30 +15,16 @@ export function Footer() {
       <Separator />
 
       <div className="flex flex-col items-center space-y-4 text-center">
-        {!isHomePage && (
-          <div className="flex space-x-4">
-            {SOCIALS.map((social) => (
-              <SocialLink
-                key={social.label}
-                aria-label={`Follow on ${social.label}`}
-                href={social.href}
-                icon={social.icon}
-                className="text-muted-foreground hover:text-foreground transition-colors"
-              />
-            ))}
-          </div>
-        )}
-
         <div className="space-y-2 text-sm text-muted-foreground">
           <p>
             © 2026
             <a
-              href={siteMetadata.social.x}
+              href={"/"}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-foreground ml-1 transition-colors"
             >
-              karlito1501
+              Blaze Studios
             </a>
             . All rights reserved.
           </p>

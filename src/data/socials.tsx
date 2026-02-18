@@ -7,6 +7,7 @@ import {
 } from "../components/icons";
 
 export const SOCIALS = [
+  /*
   {
     label: "GitHub",
     href: "https://github.com/karlo292",
@@ -17,4 +18,5 @@ export const SOCIALS = [
     href: "https://x.com/karlito1501",
     icon: XIcon,
   },
+  */
 ];

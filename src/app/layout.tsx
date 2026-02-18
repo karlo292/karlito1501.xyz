@@ -11,6 +11,8 @@ import Head from "./head";
 import { ENV } from "@/lib/env";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Toaster, toast } from 'sonner';
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 const space_grotesk = Space_Grotesk({
   subsets: ["latin"],
